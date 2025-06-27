@@ -1,0 +1,7 @@
+<mvc:View
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:this="UI5con2025.notheming.control"
+  class="sapUiResponsiveMargin"
+  width="auto">
+  <this:Flower />
+</mvc:View>
