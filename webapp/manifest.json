@@ -1,12 +1,9 @@
 {
   "_version": "1.68.0",
   "sap.app": {
-    "id": "UI5con2025.notheming",
+    "id": "UI5con2025.parametersget",
     "type": "application",
-    "title": "UI5con2025 No Theming",
-    "applicationVersion": {
-      "version": "1.0.0"
-    }
+    "title": "UI5con2025 Parameters Get"
   },
   "sap.ui": {
     "technology": "UI5",
@@ -25,7 +22,7 @@
       }
     },
     "rootView": {
-      "viewName": "UI5con2025.notheming.view.App",
+      "viewName": "UI5con2025.parametersget.view.App",
       "type": "XML",
       "id": "app"
     },

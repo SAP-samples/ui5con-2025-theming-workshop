@@ -1,7 +1,7 @@
 {
-  "name": "@sap-samples/ui5con-2025-theming-workshop-no-theming",
+  "name": "@sap-samples/ui5con-2025-theming-workshop-parameters-get",
   "version": "1.0.0",
-  "description": "Sample UI5 project that does not have a theming solution yet.",
+  "description": "Sample UI5 project that uses UI5s Parameters.get() for theming.",
   "keywords": [
     "UI5",
     "SAPUI5",

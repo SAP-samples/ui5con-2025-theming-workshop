@@ -1,3 +1,4 @@
+/* ".flower" is the container that contains petals. */
 .flower {
   position: relative;
   display: flex;
@@ -7,6 +8,7 @@
   height: 16rem;
 }
 
+/* ".flower__petal" is the ellipsis-shape that rotates around the center. */
 .flower__petal {
   position: absolute;
   display: flex;
@@ -17,7 +19,6 @@
   border-radius: 50%;
   border-width: 0.125rem;
   border-style: solid;
-  opacity: 0.8;
   animation: spin 15s linear infinite;
 }
 
@@ -32,35 +33,22 @@
 
 /* the lowest petal */
 .flower__petal:nth-of-type(1) {
-  background-color: #5611ad;
-  /* border-color is a 20% darker version of the background-color */
-  border-color: #280850;
-  /* spin slowly rotates, negative animation-delays define equidistant starting points */
   animation-delay: -15s;
 }
 
 .flower__petal:nth-of-type(2) {
-  background-color: #6213c5;
-  border-color: #340a68;
   animation-delay: -12s;
 }
 
 .flower__petal:nth-of-type(3) {
-  background-color: #6d15dc;
-  border-color: #3f0c7f;
   animation-delay: -9s;
 }
 
 .flower__petal:nth-of-type(4) {
-  background-color: #7a21ea;
-  border-color: #4b0e96;
   animation-delay: -6s;
 }
 
 /* the top-most petal, actually displaying text */
 .flower__petal:nth-of-type(5) {
-  background-color: #8838ec;
-  border-color: #5611ad;
-  color: #fff;
   animation-delay: -3s;
 }

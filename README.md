@@ -10,9 +10,9 @@ This repository contains different starting points for the workshop "Build Your 
 
 To pick a starting point, switch to one of the following branches:
 
-- **[`no-theming`](../../tree/no-theming) for a project that does not have a theming solution yet**
+- [`no-theming`](../../tree/no-theming) for a project that does not have a theming solution yet
 - [`library-less`](../../tree/library-less) for a project that has a library.less as part of the UI5 distribution build
-- [`parameters-get`](../../tree/parameters-get) for a project that uses UI5s [`Parameters.get()`](https://ui5.sap.com/#/api/sap.ui.core.theming.Parameters%23methods/sap.ui.core.theming.Parameters.get) for theming
+- **[`parameters-get`](../../tree/parameters-get) for a project that uses UI5s [`Parameters.get()`](https://ui5.sap.com/#/api/sap.ui.core.theming.Parameters%23methods/sap.ui.core.theming.Parameters.get) for theming**
 - [`custom-theming`](../../tree/custom-theming) for a project that employs a custom theming solution
 
 e.g.
@@ -33,7 +33,7 @@ git switch no-theming
 ```diff
   git clone git@github.com:SAP-samples/ui5con-2025-theming-workshop
   cd ui5con-2025-theming-workshop
-+ git switch no-theming
++ git switch parameters-get
 + npm ci
 + npm start # starts a livereload server, opens the app in your default browser
 ```
