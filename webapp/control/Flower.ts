@@ -1,7 +1,7 @@
 import Control from "sap/ui/core/Control";
 import type RenderManager from "sap/ui/core/RenderManager";
 
-/** @namespace UI5con2025.notheming.control */
+/** @namespace UI5con2025.libraryless.control */
 export default class Flower extends Control {
   static metadata = {};
 

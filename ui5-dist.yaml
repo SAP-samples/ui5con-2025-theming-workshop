@@ -1,6 +1,6 @@
 specVersion: "4.0"
 metadata:
-  name: "@sap-samples/ui5con-2025-theming-workshop-no-theming"
+  name: "@sap-samples/ui5con-2025-theming-workshop-library-less"
 type: application
 resources:
   configuration:

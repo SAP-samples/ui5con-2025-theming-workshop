@@ -1,7 +1,7 @@
 {
-  "name": "@sap-samples/ui5con-2025-theming-workshop-no-theming",
+  "name": "@sap-samples/ui5con-2025-theming-workshop-library-less",
   "version": "1.0.0",
-  "description": "Sample UI5 project that does not have a theming solution yet.",
+  "description": "Sample UI5 project that has a library.less as part of the UI5 distribution build.",
   "keywords": [
     "UI5",
     "SAPUI5",
@@ -37,6 +37,7 @@
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.35.0",
     "ui5-middleware-livereload": "^3.1.1",
+    "ui5-tooling-less": "^3.2.1",
     "ui5-tooling-transpile": "^3.8.0"
   }
 }

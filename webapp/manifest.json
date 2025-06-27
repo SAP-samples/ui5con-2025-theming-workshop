@@ -1,9 +1,9 @@
 {
   "_version": "1.68.0",
   "sap.app": {
-    "id": "UI5con2025.notheming",
+    "id": "UI5con2025.libraryless",
     "type": "application",
-    "title": "UI5con2025 No Theming",
+    "title": "UI5con2025 Library LESS",
     "applicationVersion": {
       "version": "1.0.0"
     }
@@ -25,16 +25,9 @@
       }
     },
     "rootView": {
-      "viewName": "UI5con2025.notheming.view.App",
+      "viewName": "UI5con2025.libraryless.view.App",
       "type": "XML",
       "id": "app"
-    },
-    "resources": {
-      "css": [
-        {
-          "uri": "css/skeleton.css"
-        }
-      ]
     }
   }
 }
