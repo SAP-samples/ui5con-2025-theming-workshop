@@ -25,7 +25,9 @@ git switch no-theming
 
 ### The Task
 
-Every starting point tried to make the project themable in a different way. All of them have drawbacks. Replace the theming logic with a **skeleton css** that is parameterized with the CSS custom properties that are available in UI5s sap.ui.core library.css since UI5 1.127. Make use of relative colors and container style queries to **implement color functions**. As a bonus, make the project **work with UI5 < 1.127** by adding a dependency to [`@sap-theming/theming-base-content`](/sap/theming-base-content).
+You started with a project that uses [`Parameters.get()`](https://ui5.sap.com/#/api/sap.ui.core.theming.Parameters%23methods/sap.ui.core.theming.Parameters.get) for theming. This is a potential performance bottleneck, as it might result in synchronous XHR requests in `render()`.
+
+Replace the use of `Parameters.get()` and the color functions in `webapp/control/Flower.ts` with a **skeleton css** that is parameterized with the CSS custom properties that are available in UI5s sap.ui.core library.css since UI5 1.127. Make use of relative colors and container style queries to **implement color functions**. As a bonus, make the project **work with UI5 < 1.127** by adding a dependency to [`@sap-theming/theming-base-content`](/sap/theming-base-content).
 
 You can track your progress with a set of OPA5 tests:
 
@@ -36,7 +38,7 @@ npm test
 If you feel stuck, you can always peek at the solution by adding `-solution` to your branch, e.g.
 
 ```sh
-git switch no-theming-solution
+git switch parameters-get-solution
 ```
 
 ## Requirements
