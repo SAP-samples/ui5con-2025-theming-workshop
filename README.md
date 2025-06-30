@@ -8,6 +8,8 @@
 
 This repository contains different starting points for the workshop "Build Your Own Themable Product With Theming Parameters And Modern CSS" held by [**@andreas-roessler**](https://github.com/andreas-roessler), [**@bhartel**](https://github.com/bhartel), [**@david-klug-sap**](https://github.com/david-klug-sap) and [**@dominikschreiber**](https://github.com/dominikschreiber) at UI5con 2025, on July 8<sup>th</sup> at SAP in St.Leon-Rot, Germany.
 
+### Get Started
+
 To pick a starting point, switch to one of the following branches:
 
 - [`no-theming`](../../tree/no-theming) for a project that does not have a theming solution yet
@@ -19,6 +21,22 @@ e.g.
 
 ```sh
 git switch no-theming
+```
+
+### The Task
+
+Every starting point tried to make the project themable in a different way. All of them have drawbacks. Replace the theming logic with a **skeleton css** that is parameterized with the CSS custom properties that are available in UI5s sap.ui.core library.css since UI5 1.127. Make use of relative colors and container style queries to **implement color functions**. As a bonus, make the project **work with UI5 < 1.127** by adding a dependency to [`@sap-theming/theming-base-content`](/sap/theming-base-content).
+
+You can track your progress with a set of OPA5 tests:
+
+```sh
+npm test
+```
+
+If you feel stuck, you can always peek at the solution by adding `-solution` to your branch, e.g.
+
+```sh
+git switch no-theming-solution
 ```
 
 ## Requirements
