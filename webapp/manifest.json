@@ -1,0 +1,33 @@
+{
+  "_version": "1.68.0",
+  "sap.app": {
+    "id": "UI5con2025.libraryless",
+    "type": "application",
+    "title": "UI5con2025 Library LESS",
+    "applicationVersion": {
+      "version": "1.0.0"
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.136",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {}
+      }
+    },
+    "rootView": {
+      "viewName": "UI5con2025.libraryless.view.App",
+      "type": "XML",
+      "id": "app"
+    }
+  }
+}
