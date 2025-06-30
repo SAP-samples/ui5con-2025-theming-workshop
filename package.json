@@ -1,43 +1,44 @@
 {
-  "name": "@sap-samples/ui5con-2025-theming-workshop-library-less",
-  "version": "1.0.0",
-  "description": "Sample UI5 project that has a library.less as part of the UI5 distribution build.",
-  "keywords": [
-    "UI5",
-    "SAPUI5",
-    "openUI5",
-    "theming"
-  ],
-  "homepage": "https://github.com/sap-samples/ui5con-2025-theming-workshop#readme",
-  "bugs": {
-    "url": "https://github.com/sap-samples/ui5con-2025-theming-workshop/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sap-samples/ui5con-2025-theming-workshop.git"
-  },
-  "license": "ISC",
-  "author": "SAP SE",
-  "type": "module",
-  "main": "index.js",
-  "scripts": {
-    "build": "ui5 build --clean-dest",
-    "build:opt": "ui5 build self-contained --clean-dest --all",
-    "start": "ui5 serve --port 8080 -o index.html",
-    "start:dist": "ui5 serve  --port 8080 -o index.html --config ui5-dist.yaml",
-    "ts-typecheck": "tsc --noEmit",
-    "lint": "eslint webapp",
-    "ui5lint": "ui5lint"
-  },
-  "devDependencies": {
-    "@types/openui5": "^1.136.0",
-    "@ui5/cli": "^4.0.19",
-    "@ui5/linter": "^1.13.1",
-    "eslint": "^9.29.0",
-    "typescript": "^5.8.3",
-    "typescript-eslint": "^8.35.0",
-    "ui5-middleware-livereload": "^3.1.1",
-    "ui5-tooling-less": "^3.2.1",
-    "ui5-tooling-transpile": "^3.8.0"
-  }
+	"name": "@sap-samples/ui5con-2025-theming-workshop-library-less",
+	"version": "1.0.0",
+	"description": "Sample UI5 project that has a library.less as part of the UI5 distribution build.",
+	"keywords": [
+		"UI5",
+		"SAPUI5",
+		"openUI5",
+		"theming"
+	],
+	"homepage": "https://github.com/sap-samples/ui5con-2025-theming-workshop#readme",
+	"bugs": {
+		"url": "https://github.com/sap-samples/ui5con-2025-theming-workshop/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/sap-samples/ui5con-2025-theming-workshop.git"
+	},
+	"license": "ISC",
+	"author": "SAP SE",
+	"scripts": {
+		"build": "ui5 build --clean-dest",
+		"build:opt": "ui5 build self-contained --clean-dest --all",
+		"start": "ui5 serve --port 8080 -o index.html",
+		"start:dist": "ui5 serve  --port 8080 -o index.html --config ui5-dist.yaml",
+		"ts-typecheck": "tsc --noEmit",
+		"lint": "eslint webapp",
+		"ui5lint": "ui5lint",
+		"pretest": "npm run build",
+		"test": "ui5-test-runner --webapp dist --testsuite test/testsuite.qunit.html"
+	},
+	"devDependencies": {
+		"@types/openui5": "^1.136.0",
+		"@ui5/cli": "^4.0.19",
+		"@ui5/linter": "^1.13.1",
+		"eslint": "^9.29.0",
+		"typescript": "^5.8.3",
+		"typescript-eslint": "^8.35.0",
+		"ui5-middleware-livereload": "^3.1.1",
+		"ui5-test-runner": "^5.8.1",
+		"ui5-tooling-less": "^3.2.1",
+		"ui5-tooling-transpile": "^3.8.0"
+	}
 }
