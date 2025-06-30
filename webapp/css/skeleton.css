@@ -3,73 +3,75 @@
  * we have to introduce "helper variables" that get either black or white
  * depending on the background color. To compare their actual values in a
  * container style query, they have to be defined as colors. */
+
 @property --_UI5Con2025_parametersget_Flower_Petal_1_ColorContrast {
 	syntax: "<color>";
 	inherits: true;
-	inital-value: red;
+	initial-value: red;
 }
 @property --_UI5Con2025_parametersget_Flower_Petal_2_ColorContrast {
 	syntax: "<color>";
 	inherits: true;
-	inital-value: red;
+	initial-value: red;
 }
 @property --_UI5Con2025_parametersget_Flower_Petal_3_ColorContrast {
 	syntax: "<color>";
 	inherits: true;
-	inital-value: red;
+	initial-value: red;
 }
 @property --_UI5Con2025_parametersget_Flower_Petal_4_ColorContrast {
 	syntax: "<color>";
 	inherits: true;
-	inital-value: red;
+	initial-value: red;
 }
 @property --_UI5Con2025_parametersget_Flower_Petal_5_ColorContrast {
 	syntax: "<color>";
 	inherits: true;
-	inital-value: red;
+	initial-value: red;
 }
 
-/* By default, map backgrounds to the previous background (or
- * --sapSelectedColor), text colors to --sapTextColor (they get their
- * contrast color in container style queries below) and borders to text
- * colors. */
+/* By default, we map backgrounds to the previous background (or
+ * --sapSelectedColor), text colors to their _ColorContrast helper variable
+ * (which is either black or white -- best for readability), and borders to
+ * text colors. */
+
 :root {
 	--_UI5Con2025_parametersget_Flower_Petal_Opacity: 1;
 
-	--_UI5Con2025_parametersget_Flower_Petal_1_TextColor: var(--sapTextColor);
 	--_UI5Con2025_parametersget_Flower_Petal_1_Background: var(--sapSelectedColor);
-	--_UI5Con2025_parametersget_Flower_Petal_1_BorderColor: var(--_UI5Con2025_parametersget_Flower_Petal_1_TextColor);
 	--_UI5Con2025_parametersget_Flower_Petal_1_ColorContrast: oklch(
-		from var(--_UI5Con2025_parametersget_Flower_Petal_1_Background) clamp(0, (l / 0.623 - 1) * infinity, 1) 0 0
+		from var(--_UI5Con2025_parametersget_Flower_Petal_1_Background) clamp(0, (l / 0.623 - 1) * -infinity, 1) 0 0
 	);
+	--_UI5Con2025_parametersget_Flower_Petal_1_TextColor: var(--_UI5Con2025_parametersget_Flower_Petal_1_ColorContrast);
+	--_UI5Con2025_parametersget_Flower_Petal_1_BorderColor: var(--_UI5Con2025_parametersget_Flower_Petal_1_TextColor);
 
-	--_UI5Con2025_parametersget_Flower_Petal_2_TextColor: var(--sapTextColor);
 	--_UI5Con2025_parametersget_Flower_Petal_2_Background: var(--_UI5Con2025_parametersget_Flower_Petal_1_Background);
-	--_UI5Con2025_parametersget_Flower_Petal_2_BorderColor: var(--_UI5Con2025_parametersget_Flower_Petal_2_TextColor);
 	--_UI5Con2025_parametersget_Flower_Petal_2_ColorContrast: oklch(
-		from var(--_UI5Con2025_parametersget_Flower_Petal_2_Background) clamp(0, (l / 0.623 - 1) * infinity, 1) 0 0
+		from var(--_UI5Con2025_parametersget_Flower_Petal_2_Background) clamp(0, (l / 0.623 - 1) * -infinity, 1) 0 0
 	);
+	--_UI5Con2025_parametersget_Flower_Petal_2_TextColor: var(--_UI5Con2025_parametersget_Flower_Petal_2_ColorContrast);
+	--_UI5Con2025_parametersget_Flower_Petal_2_BorderColor: var(--_UI5Con2025_parametersget_Flower_Petal_2_TextColor);
 
-	--_UI5Con2025_parametersget_Flower_Petal_3_TextColor: var(--sapTextColor);
 	--_UI5Con2025_parametersget_Flower_Petal_3_Background: var(--_UI5Con2025_parametersget_Flower_Petal_2_Background);
-	--_UI5Con2025_parametersget_Flower_Petal_3_BorderColor: var(--_UI5Con2025_parametersget_Flower_Petal_3_TextColor);
 	--_UI5Con2025_parametersget_Flower_Petal_3_ColorContrast: oklch(
-		from var(--_UI5Con2025_parametersget_Flower_Petal_3_Background) clamp(0, (l / 0.623 - 1) * infinity, 1) 0 0
+		from var(--_UI5Con2025_parametersget_Flower_Petal_3_Background) clamp(0, (l / 0.623 - 1) * -infinity, 1) 0 0
 	);
+	--_UI5Con2025_parametersget_Flower_Petal_3_TextColor: var(--_UI5Con2025_parametersget_Flower_Petal_3_ColorContrast);
+	--_UI5Con2025_parametersget_Flower_Petal_3_BorderColor: var(--_UI5Con2025_parametersget_Flower_Petal_3_TextColor);
 
-	--_UI5Con2025_parametersget_Flower_Petal_4_TextColor: var(--sapTextColor);
 	--_UI5Con2025_parametersget_Flower_Petal_4_Background: var(--_UI5Con2025_parametersget_Flower_Petal_3_Background);
-	--_UI5Con2025_parametersget_Flower_Petal_4_BorderColor: var(--_UI5Con2025_parametersget_Flower_Petal_4_TextColor);
 	--_UI5Con2025_parametersget_Flower_Petal_4_ColorContrast: oklch(
-		from var(--_UI5Con2025_parametersget_Flower_Petal_4_Background) clamp(0, (l / 0.623 - 1) * infinity, 1) 0 0
+		from var(--_UI5Con2025_parametersget_Flower_Petal_4_Background) clamp(0, (l / 0.623 - 1) * -infinity, 1) 0 0
 	);
+	--_UI5Con2025_parametersget_Flower_Petal_4_TextColor: var(--_UI5Con2025_parametersget_Flower_Petal_4_ColorContrast);
+	--_UI5Con2025_parametersget_Flower_Petal_4_BorderColor: var(--_UI5Con2025_parametersget_Flower_Petal_4_TextColor);
 
-	--_UI5Con2025_parametersget_Flower_Petal_5_TextColor: var(--sapTextColor);
 	--_UI5Con2025_parametersget_Flower_Petal_5_Background: var(--_UI5Con2025_parametersget_Flower_Petal_4_Background);
-	--_UI5Con2025_parametersget_Flower_Petal_5_BorderColor: var(--_UI5Con2025_parametersget_Flower_Petal_5_TextColor);
 	--_UI5Con2025_parametersget_Flower_Petal_5_ColorContrast: oklch(
-		from var(--_UI5Con2025_parametersget_Flower_Petal_5_Background) clamp(0, (l / 0.623 - 1) * infinity, 1) 0 0
+		from var(--_UI5Con2025_parametersget_Flower_Petal_5_Background) clamp(0, (l / 0.623 - 1) * -infinity, 1) 0 0
 	);
+	--_UI5Con2025_parametersget_Flower_Petal_5_TextColor: var(--_UI5Con2025_parametersget_Flower_Petal_5_ColorContrast);
+	--_UI5Con2025_parametersget_Flower_Petal_5_BorderColor: var(--_UI5Con2025_parametersget_Flower_Petal_5_TextColor);
 }
 
 /* Container style queries against --sapSapThemeId allow theme-, or flavor-
@@ -112,35 +114,144 @@
 }
 
 /* To apply a contrast, we provide container style queries against the
- * _ColorContrast custom properties we introduced at the :root. As they are
- * dependent on the _Background values (which change on the body, see above)
- * we have to target another element inside the body, which contains all our
- * components. */
-@container style(--_UI5Con2025_parametersget_Flower_Petal_1_ColorContrast) {
+ * _ColorContrast custom properties we introduced at the :root.
+ * _TextColor is initially mapped to _ColorContrast, which is either black or
+ * white. This is already optimal for high-contrast themes, so we leave them
+ * out. */
+
+/* #region ...Flower_Petal_1_TextColor */
+/* #region sap_horizon */
+@container style(--_UI5Con2025_parametersget_Flower_Petal_1_ColorContrast: oklch(0 0 0)) and style(--sapSapThemeId: sap_horizon) {
+	/* As the container queries are dependent on the _Background values (which
+	 * change on the body, see above), we have to target another element inside
+	 * the body, which contains all our components. */
+	div[data-id="container"] {
+		--_UI5Con2025_parametersget_Flower_Petal_1_TextColor: var(--sapTextColor);
+	}
+}
+@container style(--_UI5Con2025_parametersget_Flower_Petal_1_ColorContrast: oklch(1 0 0)) and style(--sapSapThemeId: sap_horizon) {
 	div[data-id="container"] {
 		--_UI5Con2025_parametersget_Flower_Petal_1_TextColor: var(--sapContent_ContrastTextColor);
 	}
 }
-@container style(--_UI5Con2025_parametersget_Flower_Petal_2_ColorContrast) {
+/* #endregion */
+/* #region sap_horizon_dark */
+@container style(--_UI5Con2025_parametersget_Flower_Petal_1_ColorContrast: oklch(0 0 0)) and style(--sapSapThemeId: sap_horizon_dark) {
+	div[data-id="container"] {
+		--_UI5Con2025_parametersget_Flower_Petal_1_TextColor: var(--sapContent_ContrastTextColor);
+	}
+}
+@container style(--_UI5Con2025_parametersget_Flower_Petal_1_ColorContrast: oklch(1 0 0)) and style(--sapSapThemeId: sap_horizon_dark) {
+	div[data-id="container"] {
+		--_UI5Con2025_parametersget_Flower_Petal_1_TextColor: var(--sapTextColor);
+	}
+}
+/* #endregion */
+/* #endregion */
+/* #region ...Flower_Petal_2_TextColor */
+/* #region sap_horizon */
+@container style(--_UI5Con2025_parametersget_Flower_Petal_2_ColorContrast: oklch(0 0 0)) and style(--sapSapThemeId: sap_horizon) {
+	div[data-id="container"] {
+		--_UI5Con2025_parametersget_Flower_Petal_2_TextColor: var(--sapTextColor);
+	}
+}
+@container style(--_UI5Con2025_parametersget_Flower_Petal_2_ColorContrast: oklch(1 0 0)) and style(--sapSapThemeId: sap_horizon) {
 	div[data-id="container"] {
 		--_UI5Con2025_parametersget_Flower_Petal_2_TextColor: var(--sapContent_ContrastTextColor);
 	}
 }
-@container style(--_UI5Con2025_parametersget_Flower_Petal_3_ColorContrast) {
+/* #endregion */
+/* #region sap_horizon_dark */
+@container style(--_UI5Con2025_parametersget_Flower_Petal_2_ColorContrast: oklch(0 0 0)) and style(--sapSapThemeId: sap_horizon_dark) {
+	div[data-id="container"] {
+		--_UI5Con2025_parametersget_Flower_Petal_2_TextColor: var(--sapContent_ContrastTextColor);
+	}
+}
+@container style(--_UI5Con2025_parametersget_Flower_Petal_2_ColorContrast: oklch(1 0 0)) and style(--sapSapThemeId: sap_horizon_dark) {
+	div[data-id="container"] {
+		--_UI5Con2025_parametersget_Flower_Petal_2_TextColor: var(--sapTextColor);
+	}
+}
+/* #endregion */
+/* #endregion */
+/* #region ...Flower_Petal_3_TextColor */
+/* #region sap_horizon */
+@container style(--_UI5Con2025_parametersget_Flower_Petal_3_ColorContrast: oklch(0 0 0)) and style(--sapSapThemeId: sap_horizon) {
+	div[data-id="container"] {
+		--_UI5Con2025_parametersget_Flower_Petal_3_TextColor: var(--sapTextColor);
+	}
+}
+@container style(--_UI5Con2025_parametersget_Flower_Petal_3_ColorContrast: oklch(1 0 0)) and style(--sapSapThemeId: sap_horizon) {
 	div[data-id="container"] {
 		--_UI5Con2025_parametersget_Flower_Petal_3_TextColor: var(--sapContent_ContrastTextColor);
 	}
 }
-@container style(--_UI5Con2025_parametersget_Flower_Petal_4_ColorContrast) {
+/* #endregion */
+/* #region sap_horizon_dark */
+@container style(--_UI5Con2025_parametersget_Flower_Petal_3_ColorContrast: oklch(0 0 0)) and style(--sapSapThemeId: sap_horizon_dark) {
+	div[data-id="container"] {
+		--_UI5Con2025_parametersget_Flower_Petal_3_TextColor: var(--sapContent_ContrastTextColor);
+	}
+}
+@container style(--_UI5Con2025_parametersget_Flower_Petal_3_ColorContrast: oklch(1 0 0)) and style(--sapSapThemeId: sap_horizon_dark) {
+	div[data-id="container"] {
+		--_UI5Con2025_parametersget_Flower_Petal_3_TextColor: var(--sapTextColor);
+	}
+}
+/* #endregion */
+/* #endregion */
+/* #region ...Flower_Petal_4_TextColor */
+/* #region sap_horizon */
+@container style(--_UI5Con2025_parametersget_Flower_Petal_4_ColorContrast: oklch(0 0 0)) and style(--sapSapThemeId: sap_horizon) {
+	div[data-id="container"] {
+		--_UI5Con2025_parametersget_Flower_Petal_4_TextColor: var(--sapTextColor);
+	}
+}
+@container style(--_UI5Con2025_parametersget_Flower_Petal_4_ColorContrast: oklch(1 0 0)) and style(--sapSapThemeId: sap_horizon) {
 	div[data-id="container"] {
 		--_UI5Con2025_parametersget_Flower_Petal_4_TextColor: var(--sapContent_ContrastTextColor);
 	}
 }
-@container style(--_UI5Con2025_parametersget_Flower_Petal_5_ColorContrast) {
+/* #endregion */
+/* #region sap_horizon_dark */
+@container style(--_UI5Con2025_parametersget_Flower_Petal_4_ColorContrast: oklch(0 0 0)) and style(--sapSapThemeId: sap_horizon_dark) {
+	div[data-id="container"] {
+		--_UI5Con2025_parametersget_Flower_Petal_4_TextColor: var(--sapContent_ContrastTextColor);
+	}
+}
+@container style(--_UI5Con2025_parametersget_Flower_Petal_4_ColorContrast: oklch(1 0 0)) and style(--sapSapThemeId: sap_horizon_dark) {
+	div[data-id="container"] {
+		--_UI5Con2025_parametersget_Flower_Petal_4_TextColor: var(--sapTextColor);
+	}
+}
+/* #endregion */
+/* #endregion */
+/* #region ...Flower_Petal_5_TextColor */
+/* #region sap_horizon */
+@container style(--_UI5Con2025_parametersget_Flower_Petal_5_ColorContrast: oklch(0 0 0)) and style(--sapSapThemeId: sap_horizon) {
+	div[data-id="container"] {
+		--_UI5Con2025_parametersget_Flower_Petal_5_TextColor: var(--sapTextColor);
+	}
+}
+@container style(--_UI5Con2025_parametersget_Flower_Petal_5_ColorContrast: oklch(1 0 0)) and style(--sapSapThemeId: sap_horizon) {
 	div[data-id="container"] {
 		--_UI5Con2025_parametersget_Flower_Petal_5_TextColor: var(--sapContent_ContrastTextColor);
 	}
 }
+/* #endregion */
+/* #region sap_horizon_dark */
+@container style(--_UI5Con2025_parametersget_Flower_Petal_5_ColorContrast: oklch(0 0 0)) and style(--sapSapThemeId: sap_horizon_dark) {
+	div[data-id="container"] {
+		--_UI5Con2025_parametersget_Flower_Petal_5_TextColor: var(--sapContent_ContrastTextColor);
+	}
+}
+@container style(--_UI5Con2025_parametersget_Flower_Petal_5_ColorContrast: oklch(1 0 0)) and style(--sapSapThemeId: sap_horizon_dark) {
+	div[data-id="container"] {
+		--_UI5Con2025_parametersget_Flower_Petal_5_TextColor: var(--sapTextColor);
+	}
+}
+/* #endregion */
+/* #endregion */
 
 .flower {
 	position: relative;
