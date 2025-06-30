@@ -41,6 +41,85 @@ If you feel stuck, you can always peek at the solution by adding `-solution` to 
 git switch library-less-solution
 ```
 
+The minimum solution scope tested by OPA5 tests is
+
+- [ ] the top-most petal (`:nth-of-type(5)`) has `--sapSelectedColor` as the `background-color` in sap_horizon, sap_horizon_dark, sap_horizon_hcb and sap_horizon_hcw
+- [ ] the top-most petal has `opacity: 0.8` in sap_horizon and sap_horizon_dark, and `opacity: 1` in sap_horizon_hcb and sap_horizon_hcw
+
+Other than that, you can be creative with the use of color functions. The sample solution applies the following logic:
+
+- [ ] the `background-color` of every petal
+  - [ ] is 10% darker than the previous petal in sap_horizon
+  - [ ] is 10% lighter than the previous petal in sap_horizon_dark
+  - [ ] stays `--sapSelectedColor` in sap_horizon_hcb and sap_horizon_hcw
+- [ ] the `border-color` of every petal
+  - [ ] is 20% darker than the petals `background-color` in sap_horizon
+  - [ ] is 20% lighter than the petals `background-color` in sap_horizon_dark
+  - [ ] is the petals `color` (text color) in sap_horizon_hcb and sap_horizon_hcw
+- [ ] the `color` (text color) of every petal is a either `--sapTextColor` or `--sapContent_ContrastTextColor` based on contrast against the petals background in sap_horizon, sap_horizon_dark, sap_horizon_hcb and sap_horizon_hcw
+- [ ] all petals have `opacity: 0.8` in sap_horizon and sap_horizon_dark, and `opacity: 1` in sap_horizon_hcb and sap_horizon_hcw
+
+### Tools And Techniques
+
+#### Relative Colors
+
+With CSS Relative Colors (see [Using relative colors](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_colors/Relative_colors)), you can implement **color functions** like `lighten()`, `darken()` or more. Most of the time it is necessary to use a modern color space, usually `oklch()` (or `oklab()`). Now you can apply `calc()` to the different channel variables of that color:
+
+```css
+.color-functions {
+	--color: #123456;
+	--lighten-10: oklch(from var(--color) calc(l + 0.1) c h);
+	--darken-20: oklch(from var(--color) calc(l - 0.2) c h);
+	/* chroma != saturation, but it's close */
+	--saturate-30: oklch(from var(--color) l calc(c + 0.3) h);
+	--desaturate-40: oklch(from var(--color) l calc(c + 0.4) h);
+	--hue-rotate-50: oklch(from var(--color) l c calc(h + 50deg));
+}
+```
+
+#### Container Style Queries
+
+> [!WARNING]
+> Container _style_ queries are available in Firefox only with the flag `layout.css.style-queries.enabled` enabled, until Bug [1795622](https://bugzil.la/1795622) is solved.
+
+CSS container queries (see [Using container size and style queries](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_size_and_style_queries)) allow to define CSS that applies in specific parts of the page. Container _style_ queries, especially, allow to query the value of CSS properties _and custom properties_. Themes provide the custom property `--sapSapThemeId`, to define CSS for specific themes (see [Theme-specific CSS for your application](https://community.sap.com/t5/technology-blog-posts-by-sap/theme-specific-css-for-your-application/ba-p/13961249)):
+
+```css
+@container style(--sapSapThemeId: sap_horizon)
+  or style(--sapSapThemeId: sap_horizon_dark)
+  or style(--sapSapThemeId: sap_fiori_3)
+  or style(--sapSapThemeId: sap_fiori_3_dark) {
+	body {
+		/* CSS for low-contrast themes */
+	}
+}
+```
+
+#### Contrast
+
+Until browsers implement [`contrast-color()`](https://drafts.csswg.org/css-color-5/#contrast-color) properly, we can use a technique described in [On compliance vs readability: Generating text colors with CSS](https://lea.verou.me/blog/2024/contrast-color/) to implement background-color-dependent text colors. We define a helper variable, apply the technique to that variable, use a container style query to react in its value, and set the actual value accordingly:
+
+```css
+@property --_ContrastColor {
+	syntax: "<color>";
+	inherits: true;
+	initial-value: red;
+}
+:root {
+	--Background: #123456;
+	--TextColor: #f7f8f9;
+	--_ContrastColor: oklch(from var(--Background) clamp(0, (l / 0.623 - 1) * infinity, 1) 0 0);
+}
+@container style(--_ContrastColor: oklch(1 0 0)) {
+	/* black */
+	body {
+		--TextColor: #123456;
+	}
+}
+```
+
+If `--Background` is theme-dependent (i.e. it is defined in a container style query `--sapSapThemeId`), the `--TextColor` can't be defined on the `body`, it has to be defined inside (because the `--Background` is defined at the `body`, which then is the container the style query must match).
+
 ## Requirements
 
 - [git](https://git-scm.com)
