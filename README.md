@@ -1,21 +1,38 @@
 # Build Your Own Themable Product With Theming Parameters And Modern CSS
 
-<!--- Register repository https://api.reuse.software/register, then add REUSE badge:
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/ui5con-2025-theming-workshop)](https://api.reuse.software/info/github.com/SAP-samples/ui5con-2025-theming-workshop)
--->
 
 ## Description
 
 This repository contains different starting points for the workshop "Build Your Own Themable Product With Theming Parameters And Modern CSS" held by [**@andreas-roessler**](https://github.com/andreas-roessler), [**@bhartel**](https://github.com/bhartel), [**@david-klug-sap**](https://github.com/david-klug-sap) and [**@dominikschreiber**](https://github.com/dominikschreiber) at UI5con 2025, on July 8<sup>th</sup> at SAP in St.Leon-Rot, Germany.
 
-### Get Started
+## Requirements
+
+- [git](https://git-scm.com)
+- [node](https://nodejs.org)
+- a browser
+- a text editor/IDE
+
+## Download and Installation
+
+```sh
+git clone git@github.com:SAP-samples/ui5con-2025-theming-workshop
+cd ui5con-2025-theming-workshop
+git switch no-theming
+# or git switch parameters-get
+# or git switch library-less
+npm ci
+npm start # to start a livereload server
+npm test # to test your solution against the minimal scope
+```
+
+## Get Started
 
 To pick a starting point, switch to one of the following branches:
 
 - [`no-theming`](../../tree/no-theming) for a project that does not have a theming solution yet
-- **[`library-less`](../../tree/library-less) for a project that has a library.less as part of the UI5 distribution build**
 - [`parameters-get`](../../tree/parameters-get) for a project that uses UI5s [`Parameters.get()`](https://ui5.sap.com/#/api/sap.ui.core.theming.Parameters%23methods/sap.ui.core.theming.Parameters.get) for theming
-- [`custom-theming`](../../tree/custom-theming) for a project that employs a custom theming solution
+- **[`library-less`](../../tree/library-less) for a project that has a library.less as part of the UI5 distribution build**
 
 e.g.
 
@@ -23,7 +40,7 @@ e.g.
 git switch no-theming
 ```
 
-### The Task
+## The Task
 
 You started with a project that has a library.less as part of the UI5 distribution build. In our example, this only works for SAP-provided themes. In the real world, this relies on the existence and operability of the theming-service.
 
@@ -59,9 +76,9 @@ Other than that, you can be creative with the use of color functions. The sample
 - [ ] the `color` (text color) of every petal is a either `--sapTextColor` or `--sapContent_ContrastTextColor` based on contrast against the petals background in sap_horizon, sap_horizon_dark, sap_horizon_hcb and sap_horizon_hcw
 - [ ] all petals have `opacity: 0.8` in sap_horizon and sap_horizon_dark, and `opacity: 1` in sap_horizon_hcb and sap_horizon_hcw
 
-### Tools And Techniques
+## Tools And Techniques
 
-#### Relative Colors
+### Relative Colors
 
 With CSS Relative Colors (see [Using relative colors](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_colors/Relative_colors)), you can implement **color functions** like `lighten()`, `darken()` or more. Most of the time it is necessary to use a modern color space, usually `oklch()` (or `oklab()`). Now you can apply `calc()` to the different channel variables of that color:
 
@@ -77,7 +94,7 @@ With CSS Relative Colors (see [Using relative colors](https://developer.mozilla.
 }
 ```
 
-#### Container Style Queries
+### Container Style Queries
 
 > [!WARNING]
 > Container _style_ queries are available in Firefox only with the flag `layout.css.style-queries.enabled` enabled, until Bug [1795622](https://bugzil.la/1795622) is solved.
@@ -95,7 +112,7 @@ CSS container queries (see [Using container size and style queries](https://deve
 }
 ```
 
-#### Contrast
+### Contrast
 
 Until browsers implement [`contrast-color()`](https://drafts.csswg.org/css-color-5/#contrast-color) properly, we can use a technique described in [On compliance vs readability: Generating text colors with CSS](https://lea.verou.me/blog/2024/contrast-color/) to implement background-color-dependent text colors. We define a helper variable, apply the technique to that variable, use a container style query to react in its value, and set the actual value accordingly:
 
@@ -108,9 +125,9 @@ Until browsers implement [`contrast-color()`](https://drafts.csswg.org/css-color
 :root {
 	--Background: #123456;
 	--TextColor: #f7f8f9;
-	--_ContrastColor: oklch(from var(--Background) clamp(0, (l / 0.623 - 1) * infinity, 1) 0 0);
+	--_ContrastColor: oklch(from var(--Background) clamp(0, (l / 0.623 - 1) * -infinity, 1) 0 0);
 }
-@container style(--_ContrastColor: oklch(1 0 0)) {
+@container style(--_ContrastColor: oklch(0 0 0)) {
 	/* black */
 	body {
 		--TextColor: #123456;
@@ -119,23 +136,6 @@ Until browsers implement [`contrast-color()`](https://drafts.csswg.org/css-color
 ```
 
 If `--Background` is theme-dependent (i.e. it is defined in a container style query `--sapSapThemeId`), the `--TextColor` can't be defined on the `body`, it has to be defined inside (because the `--Background` is defined at the `body`, which then is the container the style query must match).
-
-## Requirements
-
-- [git](https://git-scm.com)
-- [node](https://nodejs.org)
-- a browser
-- a text editor/IDE
-
-## Download and Installation
-
-```diff
-  git clone git@github.com:SAP-samples/ui5con-2025-theming-workshop
-  cd ui5con-2025-theming-workshop
-+ git switch library-less
-+ npm ci
-+ npm start # starts a livereload server, opens the app in your default browser
-```
 
 ## Known Issues
 
