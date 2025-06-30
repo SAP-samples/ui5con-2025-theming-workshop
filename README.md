@@ -25,7 +25,9 @@ git switch no-theming
 
 ### The Task
 
-Every starting point tried to make the project themable in a different way. All of them have drawbacks. Replace the theming logic with a **skeleton css** that is parameterized with the CSS custom properties that are available in UI5s sap.ui.core library.css since UI5 1.127. Make use of relative colors and container style queries to **implement color functions**. As a bonus, make the project **work with UI5 < 1.127** by adding a dependency to [`@sap-theming/theming-base-content`](/sap/theming-base-content).
+You started with a project that has a library.less as part of the UI5 distribution build. In our example, this only works for SAP-provided themes. In the real world, this relies on the existence and operability of the theming-service.
+
+Replace the less files with a **skeleton css** that is parameterized with the CSS custom properties that are available in UI5s sap.ui.core library.css since UI5 1.127. Make use of relative colors and container style queries to **implement color functions**. As a bonus, make the project **work with UI5 < 1.127** by adding a dependency to [`@sap-theming/theming-base-content`](/sap/theming-base-content).
 
 You can track your progress with a set of OPA5 tests:
 
@@ -36,7 +38,7 @@ npm test
 If you feel stuck, you can always peek at the solution by adding `-solution` to your branch, e.g.
 
 ```sh
-git switch no-theming-solution
+git switch library-less-solution
 ```
 
 ## Requirements
