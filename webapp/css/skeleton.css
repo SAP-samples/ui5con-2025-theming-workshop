@@ -1,0 +1,213 @@
+/* To employ the contrast-color() mechanism described in
+ * https://lea.verou.me/blog/2024/contrast-color/
+ * we have to introduce "helper variables" that get either black or white
+ * depending on the background color. To compare their actual values in a
+ * container style query, they have to be defined as colors. */
+@property --_UI5Con2025_libraryless_Flower_Petal_1_ColorContrast {
+	syntax: "<color>";
+	inherits: true;
+	inital-value: red;
+}
+@property --_UI5Con2025_libraryless_Flower_Petal_2_ColorContrast {
+	syntax: "<color>";
+	inherits: true;
+	inital-value: red;
+}
+@property --_UI5Con2025_libraryless_Flower_Petal_3_ColorContrast {
+	syntax: "<color>";
+	inherits: true;
+	inital-value: red;
+}
+@property --_UI5Con2025_libraryless_Flower_Petal_4_ColorContrast {
+	syntax: "<color>";
+	inherits: true;
+	inital-value: red;
+}
+@property --_UI5Con2025_libraryless_Flower_Petal_5_ColorContrast {
+	syntax: "<color>";
+	inherits: true;
+	inital-value: red;
+}
+
+/* By default, map backgrounds to the previous background (or
+ * --sapSelectedColor), text colors to --sapTextColor (they get their
+ * contrast color in container style queries below) and borders to text
+ * colors. */
+:root {
+	--_UI5Con2025_libraryless_Flower_Petal_Opacity: 1;
+
+	--_UI5Con2025_libraryless_Flower_Petal_1_TextColor: var(--sapTextColor);
+	--_UI5Con2025_libraryless_Flower_Petal_1_Background: var(--sapSelectedColor);
+	--_UI5Con2025_libraryless_Flower_Petal_1_BorderColor: var(--_UI5Con2025_libraryless_Flower_Petal_1_TextColor);
+	--_UI5Con2025_libraryless_Flower_Petal_1_ColorContrast: oklch(
+		from var(--_UI5Con2025_libraryless_Flower_Petal_1_Background) clamp(0, (l / 0.623 - 1) * infinity, 1) 0 0
+	);
+
+	--_UI5Con2025_libraryless_Flower_Petal_2_TextColor: var(--sapTextColor);
+	--_UI5Con2025_libraryless_Flower_Petal_2_Background: var(--_UI5Con2025_libraryless_Flower_Petal_1_Background);
+	--_UI5Con2025_libraryless_Flower_Petal_2_BorderColor: var(--_UI5Con2025_libraryless_Flower_Petal_2_TextColor);
+	--_UI5Con2025_libraryless_Flower_Petal_2_ColorContrast: oklch(
+		from var(--_UI5Con2025_libraryless_Flower_Petal_2_Background) clamp(0, (l / 0.623 - 1) * infinity, 1) 0 0
+	);
+
+	--_UI5Con2025_libraryless_Flower_Petal_3_TextColor: var(--sapTextColor);
+	--_UI5Con2025_libraryless_Flower_Petal_3_Background: var(--_UI5Con2025_libraryless_Flower_Petal_2_Background);
+	--_UI5Con2025_libraryless_Flower_Petal_3_BorderColor: var(--_UI5Con2025_libraryless_Flower_Petal_3_TextColor);
+	--_UI5Con2025_libraryless_Flower_Petal_3_ColorContrast: oklch(
+		from var(--_UI5Con2025_libraryless_Flower_Petal_3_Background) clamp(0, (l / 0.623 - 1) * infinity, 1) 0 0
+	);
+
+	--_UI5Con2025_libraryless_Flower_Petal_4_TextColor: var(--sapTextColor);
+	--_UI5Con2025_libraryless_Flower_Petal_4_Background: var(--_UI5Con2025_libraryless_Flower_Petal_3_Background);
+	--_UI5Con2025_libraryless_Flower_Petal_4_BorderColor: var(--_UI5Con2025_libraryless_Flower_Petal_4_TextColor);
+	--_UI5Con2025_libraryless_Flower_Petal_4_ColorContrast: oklch(
+		from var(--_UI5Con2025_libraryless_Flower_Petal_4_Background) clamp(0, (l / 0.623 - 1) * infinity, 1) 0 0
+	);
+
+	--_UI5Con2025_libraryless_Flower_Petal_5_TextColor: var(--sapTextColor);
+	--_UI5Con2025_libraryless_Flower_Petal_5_Background: var(--_UI5Con2025_libraryless_Flower_Petal_4_Background);
+	--_UI5Con2025_libraryless_Flower_Petal_5_BorderColor: var(--_UI5Con2025_libraryless_Flower_Petal_5_TextColor);
+	--_UI5Con2025_libraryless_Flower_Petal_5_ColorContrast: oklch(
+		from var(--_UI5Con2025_libraryless_Flower_Petal_5_Background) clamp(0, (l / 0.623 - 1) * infinity, 1) 0 0
+	);
+}
+
+/* Container style queries against --sapSapThemeId allow theme-, or flavor-
+ * specific CSS, e.g. for all low-contrast light themes or all high-contrast
+ * dark themes. */
+@container style(--sapSapThemeId: sap_horizon) or style(--sapSapThemeId: sap_horizon_dark) {
+	/* :root is the outermost container, but everything is inside the body,
+	 * so it is sufficient to apply theme-specific values there */
+	body {
+		--_UI5Con2025_libraryless_Flower_Petal_Opacity: 0.8;
+	}
+}
+@container style(--sapSapThemeId: sap_horizon) {
+	body {
+		--_UI5Con2025_libraryless_Flower_Petal_2_Background: oklch(from var(--_UI5Con2025_libraryless_Flower_Petal_1_Background) calc(l - 0.1) c h);
+		--_UI5Con2025_libraryless_Flower_Petal_3_Background: oklch(from var(--_UI5Con2025_libraryless_Flower_Petal_2_Background) calc(l - 0.1) c h);
+		--_UI5Con2025_libraryless_Flower_Petal_4_Background: oklch(from var(--_UI5Con2025_libraryless_Flower_Petal_3_Background) calc(l - 0.1) c h);
+		--_UI5Con2025_libraryless_Flower_Petal_5_Background: oklch(from var(--_UI5Con2025_libraryless_Flower_Petal_4_Background) calc(l - 0.1) c h);
+
+		--_UI5Con2025_libraryless_Flower_Petal_1_BorderColor: oklch(from var(--_UI5Con2025_libraryless_Flower_Petal_1_Background) calc(l - 0.2) c h);
+		--_UI5Con2025_libraryless_Flower_Petal_2_BorderColor: oklch(from var(--_UI5Con2025_libraryless_Flower_Petal_2_Background) calc(l - 0.2) c h);
+		--_UI5Con2025_libraryless_Flower_Petal_3_BorderColor: oklch(from var(--_UI5Con2025_libraryless_Flower_Petal_3_Background) calc(l - 0.2) c h);
+		--_UI5Con2025_libraryless_Flower_Petal_4_BorderColor: oklch(from var(--_UI5Con2025_libraryless_Flower_Petal_4_Background) calc(l - 0.2) c h);
+		--_UI5Con2025_libraryless_Flower_Petal_5_BorderColor: oklch(from var(--_UI5Con2025_libraryless_Flower_Petal_5_Background) calc(l - 0.2) c h);
+	}
+}
+@container style(--sapSapThemeId: sap_horizon_dark) {
+	body {
+		--_UI5Con2025_libraryless_Flower_Petal_2_Background: oklch(from var(--_UI5Con2025_libraryless_Flower_Petal_1_Background) calc(l + 0.1) c h);
+		--_UI5Con2025_libraryless_Flower_Petal_3_Background: oklch(from var(--_UI5Con2025_libraryless_Flower_Petal_2_Background) calc(l + 0.1) c h);
+		--_UI5Con2025_libraryless_Flower_Petal_4_Background: oklch(from var(--_UI5Con2025_libraryless_Flower_Petal_3_Background) calc(l + 0.1) c h);
+		--_UI5Con2025_libraryless_Flower_Petal_5_Background: oklch(from var(--_UI5Con2025_libraryless_Flower_Petal_4_Background) calc(l + 0.1) c h);
+
+		--_UI5Con2025_libraryless_Flower_Petal_1_BorderColor: oklch(from var(--_UI5Con2025_libraryless_Flower_Petal_1_Background) calc(l + 0.2) c h);
+		--_UI5Con2025_libraryless_Flower_Petal_2_BorderColor: oklch(from var(--_UI5Con2025_libraryless_Flower_Petal_2_Background) calc(l + 0.2) c h);
+		--_UI5Con2025_libraryless_Flower_Petal_3_BorderColor: oklch(from var(--_UI5Con2025_libraryless_Flower_Petal_3_Background) calc(l + 0.2) c h);
+		--_UI5Con2025_libraryless_Flower_Petal_4_BorderColor: oklch(from var(--_UI5Con2025_libraryless_Flower_Petal_4_Background) calc(l + 0.2) c h);
+		--_UI5Con2025_libraryless_Flower_Petal_5_BorderColor: oklch(from var(--_UI5Con2025_libraryless_Flower_Petal_5_Background) calc(l + 0.2) c h);
+	}
+}
+
+/* To apply a contrast, we provide container style queries against the
+ * _ColorContrast custom properties we introduced at the :root. As they are
+ * dependent on the _Background values (which change on the body, see above)
+ * we have to target another element inside the body, which contains all our
+ * components. */
+@container style(--_UI5Con2025_libraryless_Flower_Petal_1_ColorContrast) {
+	div[data-id="container"] {
+		--_UI5Con2025_libraryless_Flower_Petal_1_TextColor: var(--sapContent_ContrastTextColor);
+	}
+}
+@container style(--_UI5Con2025_libraryless_Flower_Petal_2_ColorContrast) {
+	div[data-id="container"] {
+		--_UI5Con2025_libraryless_Flower_Petal_2_TextColor: var(--sapContent_ContrastTextColor);
+	}
+}
+@container style(--_UI5Con2025_libraryless_Flower_Petal_3_ColorContrast) {
+	div[data-id="container"] {
+		--_UI5Con2025_libraryless_Flower_Petal_3_TextColor: var(--sapContent_ContrastTextColor);
+	}
+}
+@container style(--_UI5Con2025_libraryless_Flower_Petal_4_ColorContrast) {
+	div[data-id="container"] {
+		--_UI5Con2025_libraryless_Flower_Petal_4_TextColor: var(--sapContent_ContrastTextColor);
+	}
+}
+@container style(--_UI5Con2025_libraryless_Flower_Petal_5_ColorContrast) {
+	div[data-id="container"] {
+		--_UI5Con2025_libraryless_Flower_Petal_5_TextColor: var(--sapContent_ContrastTextColor);
+	}
+}
+
+.flower {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 16rem;
+	height: 16rem;
+}
+
+.flower__petal {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 8rem;
+	height: 16rem;
+	border-radius: 50%;
+	border-width: 0.125rem;
+	border-style: solid;
+	opacity: var(--_UI5Con2025_libraryless_Flower_Petal_Opacity);
+	animation: spin 15s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/* the lowest petal */
+.flower__petal:nth-of-type(1) {
+	background-color: var(--_UI5Con2025_libraryless_Flower_Petal_5_Background);
+	border-color: var(--_UI5Con2025_libraryless_Flower_Petal_5_BorderColor);
+	color: var(--_UI5Con2025_libraryless_Flower_Petal_5_TextColor);
+	/* spin slowly rotates, negative animation-delays define equidistant starting points */
+	animation-delay: -15s;
+}
+
+.flower__petal:nth-of-type(2) {
+	background-color: var(--_UI5Con2025_libraryless_Flower_Petal_4_Background);
+	border-color: var(--_UI5Con2025_libraryless_Flower_Petal_4_BorderColor);
+	color: var(--_UI5Con2025_libraryless_Flower_Petal_4_TextColor);
+	animation-delay: -12s;
+}
+
+.flower__petal:nth-of-type(3) {
+	background-color: var(--_UI5Con2025_libraryless_Flower_Petal_3_Background);
+	border-color: var(--_UI5Con2025_libraryless_Flower_Petal_3_BorderColor);
+	color: var(--_UI5Con2025_libraryless_Flower_Petal_3_TextColor);
+	animation-delay: -9s;
+}
+
+.flower__petal:nth-of-type(4) {
+	background-color: var(--_UI5Con2025_libraryless_Flower_Petal_2_Background);
+	border-color: var(--_UI5Con2025_libraryless_Flower_Petal_2_BorderColor);
+	color: var(--_UI5Con2025_libraryless_Flower_Petal_2_TextColor);
+	animation-delay: -6s;
+}
+
+/* the top-most petal, actually displaying text */
+.flower__petal:nth-of-type(5) {
+	background-color: var(--_UI5Con2025_libraryless_Flower_Petal_1_Background);
+	border-color: var(--_UI5Con2025_libraryless_Flower_Petal_1_BorderColor);
+	color: var(--_UI5Con2025_libraryless_Flower_Petal_1_TextColor);
+	animation-delay: -3s;
+}
