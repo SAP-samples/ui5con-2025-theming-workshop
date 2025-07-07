@@ -19,23 +19,22 @@
 	border-style: solid;
 	opacity: 0.8;
 	animation: spin 15s linear infinite;
+	animation-play-state: paused;
 }
 
 @keyframes spin {
 	0% {
-		transform: rotate(0deg);
+		transform: rotate(-72deg);
 	}
 	100% {
-		transform: rotate(360deg);
+		transform: rotate(288deg);
 	}
 }
 
 /* the lowest petal */
 .flower__petal:nth-of-type(1) {
 	background-color: #5611ad;
-	/* border-color is a 20% darker version of the background-color */
 	border-color: #280850;
-	/* spin slowly rotates, negative animation-delays define equidistant starting points */
 	animation-delay: -15s;
 }
 
