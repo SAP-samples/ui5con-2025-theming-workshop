@@ -1,3 +1,81 @@
+@property --_Petal_1_ContrastColor {
+	syntax: "<color>";
+	inherits: true;
+	initial-value: red;
+}
+
+:root {
+	--_Petal_Opacity: 1;
+
+	--_Petal_1_Background: var(--sapSelectedColor, #0070f2);
+	--_Petal_2_Background: var(--_Petal_1_Background);
+	--_Petal_3_Background: var(--_Petal_2_Background);
+	--_Petal_4_Background: var(--_Petal_3_Background);
+	--_Petal_5_Background: var(--_Petal_4_Background);
+
+	--_Petal_1_ContrastColor: oklch(from var(--_Petal_1_Background) clamp(0, (l / 0.623 - 1) * -infinity, 1) 0 0);
+	--_Petal_1_TextColor: var(--_Petal_1_ContrastColor);
+
+	--_Petal_1_BorderColor: var(--_Petal_1_TextColor);
+	--_Petal_2_BorderColor: var(--sapTextColor);
+	--_Petal_3_BorderColor: var(--sapTextColor);
+	--_Petal_4_BorderColor: var(--sapTextColor);
+	--_Petal_5_BorderColor: var(--sapTextColor);
+}
+
+@container style(--sapSapThemeId: sap_horizon) {
+	body {
+		--_Petal_Opacity: 0.8;
+
+		--_Petal_2_Background: oklch(from var(--_Petal_1_Background) calc(l - 0.1) c h);
+		--_Petal_3_Background: oklch(from var(--_Petal_2_Background) calc(l - 0.1) c h);
+		--_Petal_4_Background: oklch(from var(--_Petal_3_Background) calc(l - 0.1) c h);
+		--_Petal_5_Background: oklch(from var(--_Petal_4_Background) calc(l - 0.1) c h);
+
+		--_Petal_1_BorderColor: oklch(from var(--_Petal_1_Background) calc(l - 0.2) c h);
+		--_Petal_2_BorderColor: oklch(from var(--_Petal_2_Background) calc(l - 0.2) c h);
+		--_Petal_3_BorderColor: oklch(from var(--_Petal_3_Background) calc(l - 0.2) c h);
+		--_Petal_4_BorderColor: oklch(from var(--_Petal_4_Background) calc(l - 0.2) c h);
+		--_Petal_5_BorderColor: oklch(from var(--_Petal_5_Background) calc(l - 0.2) c h);
+	}
+}
+@container style(--sapSapThemeId: sap_horizon_dark) {
+	body {
+		--_Petal_Opacity: 0.8;
+
+		--_Petal_2_Background: oklch(from var(--_Petal_1_Background) calc(l + 0.1) c h);
+		--_Petal_3_Background: oklch(from var(--_Petal_2_Background) calc(l + 0.1) c h);
+		--_Petal_4_Background: oklch(from var(--_Petal_3_Background) calc(l + 0.1) c h);
+		--_Petal_5_Background: oklch(from var(--_Petal_4_Background) calc(l + 0.1) c h);
+
+		--_Petal_1_BorderColor: oklch(from var(--_Petal_1_Background) calc(l + 0.2) c h);
+		--_Petal_2_BorderColor: oklch(from var(--_Petal_2_Background) calc(l + 0.2) c h);
+		--_Petal_3_BorderColor: oklch(from var(--_Petal_3_Background) calc(l + 0.2) c h);
+		--_Petal_4_BorderColor: oklch(from var(--_Petal_4_Background) calc(l + 0.2) c h);
+		--_Petal_5_BorderColor: oklch(from var(--_Petal_5_Background) calc(l + 0.2) c h);
+	}
+}
+@container style(--_Petal_1_ContrastColor: oklch(0 0 0)) and style(--sapSapThemeId: sap_horizon) {
+	div[data-id="container"] {
+		--_Petal_1_TextColor: var(--sapTextColor);
+	}
+}
+@container style(--_Petal_1_ContrastColor: oklch(1 0 0)) and style(--sapSapThemeId: sap_horizon) {
+	div[data-id="container"] {
+		--_Petal_1_TextColor: var(--sapContent_ContrastTextColor);
+	}
+}
+@container style(--_Petal_1_ContrastColor: oklch(1 0 0)) and style(--sapSapThemeId: sap_horizon_dark) {
+	div[data-id="container"] {
+		--_Petal_1_TextColor: var(--sapTextColor);
+	}
+}
+@container style(--_Petal_1_ContrastColor: oklch(0 0 0)) and style(--sapSapThemeId: sap_horizon_dark) {
+	div[data-id="container"] {
+		--_Petal_1_TextColor: var(--sapContent_ContrastTextColor);
+	}
+}
+
 .flower {
 	position: relative;
 	display: flex;
@@ -17,7 +95,7 @@
 	border-radius: 50%;
 	border-width: 0.125rem;
 	border-style: solid;
-	opacity: 0.8;
+	opacity: var(--_Petal_Opacity);
 	animation: spin 15s linear infinite;
 	animation-play-state: paused;
 }
@@ -33,33 +111,33 @@
 
 /* the lowest petal */
 .flower__petal:nth-of-type(1) {
-	background-color: #5611ad;
-	border-color: #280850;
+	background-color: var(--_Petal_5_Background);
+	border-color: var(--_Petal_5_BorderColor);
 	animation-delay: -15s;
 }
 
 .flower__petal:nth-of-type(2) {
-	background-color: #6213c5;
-	border-color: #340a68;
+	background-color: var(--_Petal_4_Background);
+	border-color: var(--_Petal_4_BorderColor);
 	animation-delay: -12s;
 }
 
 .flower__petal:nth-of-type(3) {
-	background-color: #6d15dc;
-	border-color: #3f0c7f;
+	background-color: var(--_Petal_3_Background);
+	border-color: var(--_Petal_3_BorderColor);
 	animation-delay: -9s;
 }
 
 .flower__petal:nth-of-type(4) {
-	background-color: #7a21ea;
-	border-color: #4b0e96;
+	background-color: var(--_Petal_2_Background);
+	border-color: var(--_Petal_2_BorderColor);
 	animation-delay: -6s;
 }
 
 /* the top-most petal, actually displaying text */
 .flower__petal:nth-of-type(5) {
-	background-color: #8838ec;
-	border-color: #5611ad;
-	color: #fff;
+	background-color: var(--_Petal_1_Background);
+	border-color: var(--_Petal_1_BorderColor);
+	color: var(--_Petal_1_TextColor);
 	animation-delay: -3s;
 }
