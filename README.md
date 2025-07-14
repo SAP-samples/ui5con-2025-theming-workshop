@@ -1,5 +1,10 @@
 # Build Your Own Themable Product With Theming Parameters And Modern CSS
 
+> [!WARNING]
+> 🚧 This branch contains nothing but the slides for the talk ["Themable products with theming parameters and modern CSS"](../../blob/slides/slides/Themable%20products%20with%20theming%20parameters%20and%20modern%20CSS.pptx) and for the workshop ["Build your own themable product with theming parameters and modern CSS"](../../blob/slides/slides/Build%20your%20own%20themable%20product%20with%20theming%20parameters%20and%20modern%20CSS.pptx) from UI5con 2025.
+>
+> To start with the workshop switch back to [`main`](../../tree/main) and go on from there.
+
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/ui5con-2025-theming-workshop)](https://api.reuse.software/info/github.com/SAP-samples/ui5con-2025-theming-workshop)
 
 ## Description
