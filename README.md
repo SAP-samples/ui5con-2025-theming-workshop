@@ -114,9 +114,6 @@ With CSS Relative Colors (see [Using relative colors](https://developer.mozilla.
 
 ### Container Style Queries
 
-> [!WARNING]
-> Container _style_ queries are available in Firefox only with the flag `layout.css.style-queries.enabled` enabled, until Bug [1795622](https://bugzil.la/1795622) is solved.
-
 CSS container queries (see [Using container size and style queries](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_size_and_style_queries)) allow to define CSS that applies in specific parts of the page. Container _style_ queries, especially, allow to query the value of CSS properties _and custom properties_. Themes provide the custom property `--sapSapThemeId`, to define CSS for specific themes (see [Theme-specific CSS for your application](https://community.sap.com/t5/technology-blog-posts-by-sap/theme-specific-css-for-your-application/ba-p/13961249)):
 
 ```css
